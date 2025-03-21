@@ -52,6 +52,21 @@
             z-index: 1;
             flex: 1;
         }
+
+        @media (min-width: 1024px) {
+            .hero {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .hero-content {
+                flex: 0 0 40%; /* Set the first hero-content to take 40% of the width */
+            }
+
+            .hero-content:last-child {
+                flex: 0 0 60%; /* Set the second hero-content to take 60% of the width */
+            }
+        }
         
         .hero-content h1, .hero-content h2, .hero-content p{
           margin-bottom: 1rem;
@@ -322,6 +337,9 @@
             border-radius: 5px;
             font-size: 1rem;
         }
+        .mc-field-group input#hero-mc-embedded-subscribe {
+            border: none;
+        }
         @media (max-width: 767px) {
 
             .mc-field-group {
@@ -346,6 +364,7 @@
             width: 100%;
             margin-top: 1rem;
             transition: background-color 0.3s ease;
+            font-size: 1rem;
         }
 
         #mc-embedded-subscribe:hover {
@@ -361,7 +380,7 @@
         }
 
         .response {
-            padding: 1rem;
+            padding: 1rem 1rem 1rem 0;
             margin-bottom: 1rem;
             border-radius: 5px;
         }
@@ -481,11 +500,85 @@
                 width: 100%;
             }
         }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .checkbox-container input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            cursor: pointer;
+        }
+        
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .custom-checkbox input {
+            display: none;
+        }
+
+        .custom-checkbox .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .custom-checkbox input:checked + .checkmark {
+            background-color: #FEC800;
+            border-color: #FEC800;
+        }
+
+        .custom-checkbox input:checked + .checkmark::after {
+            content: "✔";
+            color: white;
+            position: absolute;
+            left: 4px;
+            top: -2px;
+            font-size: 16px;
+        }
+
+        #mc-embedded-subscribe:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #mc-embedded-subscribe {
+            background-color: #FEC800;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #mc-embedded-subscribe:hover:enabled {
+            background-color: #e5b400;
+        }
+
+        #mc-embedded-subscribe-form .response{
+            padding: 1rem;
+        }
+
     </style>
 </head>
 <body>
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content intro-logo">
             <?xml version="1.0" encoding="UTF-8"?>
             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 841.9 595.3">
             <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
@@ -862,10 +955,10 @@
             </g>
             </svg>
         </div>
-        <div class="hero-content">
+        <div class="hero-content intro-email">
             <h1>Prodotti Senza Glutine nel tuo negozio di fiducia</h1>
             <p>Sei alla ricerca di prodotti senza glutine sicuri, deliziosi e di qualità? Nel nostro negozio trovi una vasta selezione di alimenti certificati gluten free per ogni esigenza. Dall'aperitivo alla colazione, abbiamo tutto per una dieta equilibrata e gustosa.</p>
-            <h2>Iscriviti alla nostra newsletter e ricevi subito un buono sconto del 10%!</h2>
+            <h2>Iscriviti alla nostra newsletter e ricevi subito un buono sconto del 15%!</h2>
             <div class="email-form" style="width: 100%;">
                 <form action="https://gmail.us17.list-manage.com/subscribe/post?u=9628fdedab0fdccdde4a76d8e&amp;id=93da5c3b37&amp;f_id=003bede0f0" method="post" id="hero-mc-embedded-subscribe-form" name="hero-mc-embedded-subscribe-form" class="validate" target="_self" novalidate="" style="width: 100%; margin: 0; padding: 0;">
                     <div id="hero-mc_embed_signup_scroll" style="width: 100%; margin: 0; padding: 0;">
@@ -884,7 +977,7 @@
                             </div>
                         </div>
                         
-                        <div id="hero-mce-responses" class="clear foot" style="min-height: 60px;">
+                        <div id="hero-mce-responses" class="clear foot">
                             <div class="response" id="hero-mce-error-response" style="display: none;"></div>
                             <div class="response" id="hero-mce-success-response" style="display: none; color: #28a745; padding: 1rem; text-align: center; font-size: 1.1rem; background-color: #fff;"></div>
                         </div>
@@ -1018,9 +1111,13 @@
                             <div aria-hidden="true" style="position: absolute; left: -5000px;">
                                 <input type="text" name="b_9628fdedab0fdccdde4a76d8e_93da5c3b37" tabindex="-1" value="">
                             </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="subscribe-checkbox" name="subscribe-checkbox">
+                                <label for="subscribe-checkbox"><span style="font-size: 0.9rem; white-space: nowrap;">Accetto i <a href="#" style="color: #FEC800; text-decoration: underline; margin-left: 3px;">Termini e Condizioni</a></span></label>
+                            </div>
                             <div class="optionalParent">
                                 <div class="clear foot">
-                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Iscriviti" disabled>
                                 </div>
                             </div>
                             <div class="indicates-required"><span class="asterisk">*</span> Campi obbligatori</div>
@@ -1098,8 +1195,9 @@
                     window[jsonpCallback] = function(response) {
                         if (response.result === 'success') {
                             successDiv.innerHTML = formType === 'hero' ? 
-                                'Grazie!' : 
+                                'Grazie per esserti iscritto alla nostra newsletter! Controlla la tua mail (anche nella cartella Spam), ti invieremo il tuo codice sconto!' : 
                                 'Grazie per esserti iscritto alla nostra newsletter!';
+                            errorDiv.style.display = 'none';
                             successDiv.style.display = 'block';
                             form.reset();
                         } else {
@@ -1213,6 +1311,34 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const subscribeCheckbox = document.getElementById("subscribe-checkbox");
+            const subscribeButton = document.getElementById("mc-embedded-subscribe");
+        
+            if (subscribeCheckbox && subscribeButton) {
+                subscribeButton.disabled = !subscribeCheckbox.checked; // Initially disable if unchecked
+        
+                subscribeCheckbox.addEventListener("change", function () {
+                    subscribeButton.disabled = !this.checked; // Enable when checked
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkbox = document.getElementById("newsletter-agree");
+            const subscribeButton = document.getElementById("mc-embedded-subscribe");
+        
+            if (checkbox && subscribeButton) {
+                checkbox.addEventListener("change", function () {
+                    subscribeButton.disabled = !checkbox.checked; // Enable only if checked
+                });
+            }
+        });
+        </script>
+        
+        
     
 </body>
 </html>
