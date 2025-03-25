@@ -6,6 +6,9 @@
     <title>GlutenFree Life</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -30,8 +33,8 @@
             justify-content: center;
             align-items: center;
             padding: 2rem 1rem;
-            background: linear-gradient(rgba(255, 249, 242, 0.95), rgba(255, 249, 242, 0.95)),
-                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(255, 249, 242, 0.80), rgba(255, 249, 242, 0.95)),
+                        url('https://images.unsplash.com/photo-1565522734001-f00e62ec8424?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             gap: 0rem;
@@ -63,9 +66,6 @@
                 flex: 0 0 40%; /* Set the first hero-content to take 40% of the width */
             }
 
-            .hero-content:last-child {
-                flex: 0 0 60%; /* Set the second hero-content to take 60% of the width */
-            }
         }
         
         .hero-content h1, .hero-content h2, .hero-content p{
@@ -240,12 +240,12 @@
         /* Desktop styles */
         @media (min-width: 1024px) {
             .hero {
-                min-height: 90vh;
+                min-height: 80vh;
                 padding: 4rem 5%;
             }
 
             .hero-content {
-                padding: 3rem;
+                padding: 2rem;
             }
 
             h1 {
@@ -289,7 +289,7 @@
         /* Newsletter Section Styles */
         .newsletter {
             padding: 4rem 1rem;
-            background-color: #FFF9F2;
+            background-color: #e6fff8;
         }
 
         .newsletter h2 {
@@ -573,6 +573,43 @@
         #mc-embedded-subscribe-form .response{
             padding: 1rem;
         }
+
+        .scroll-down {
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .scroll-down a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .scroll-down svg {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+        }
+        @media (max-width: 767px) {
+            .scroll-down {
+                display: none;
+            }
+        }
+
 
     </style>
 </head>
@@ -962,12 +999,7 @@
             <div class="email-form" style="width: 100%;">
                 <form action="https://gmail.us17.list-manage.com/subscribe/post?u=9628fdedab0fdccdde4a76d8e&amp;id=93da5c3b37&amp;f_id=003bede0f0" method="post" id="hero-mc-embedded-subscribe-form" name="hero-mc-embedded-subscribe-form" class="validate" target="_self" novalidate="" style="width: 100%; margin: 0; padding: 0;">
                     <div id="hero-mc_embed_signup_scroll" style="width: 100%; margin: 0; padding: 0;">
-                        <div class="mc-field-group" style="display: flex; gap: 1rem; margin-bottom: 0.5rem; width: 100%;">
-                            <input type="email" name="EMAIL" class="required email" id="hero-mce-EMAIL" required="" value="" placeholder="Inserisci la tua email">
-                            <input type="submit" name="subscribe" id="hero-mc-embedded-subscribe" class="cta" value="Iscriviti" disabled style="opacity: 0.5; cursor: not-allowed;">
-                        </div>
-                        
-                        <div style="width: 100%; margin: 0 0 0.5rem 0; padding: 0; display: flex; justify-content: flex-start;">
+                        <div style="width: 100%; margin: 0 0 1rem 0; padding: 0; display: flex; justify-content: flex-start;">
                             <div style="display: flex; align-items: center; position: relative;">
                                 <input type="checkbox" name="terms" id="hero-terms" required style="position: absolute; opacity: 0; cursor: pointer; height: 18px; width: 18px; z-index: 1;">
                                 <span style="height: 18px; width: 18px; background-color: white; border: 2px solid #444; border-radius: 3px; display: inline-block; position: relative; margin-right: 10px;">
@@ -976,10 +1008,14 @@
                                 <span style="font-size: 0.9rem; white-space: nowrap;">Accetto i <a href="#" style="color: #FEC800; text-decoration: underline; margin-left: 3px;">Termini e Condizioni</a></span>
                             </div>
                         </div>
+                        <div class="mc-field-group" style="display: flex; gap: 1rem; margin-bottom: 0.5rem; width: 100%;">
+                            <input type="email" name="EMAIL" class="required email" id="hero-mce-EMAIL" required="" value="" placeholder="Inserisci la tua email">
+                            <input type="submit" name="subscribe" id="hero-mc-embedded-subscribe" class="cta" value="Iscriviti" disabled style="opacity: 0.5; cursor: not-allowed;">
+                        </div>
                         
                         <div id="hero-mce-responses" class="clear foot">
                             <div class="response" id="hero-mce-error-response" style="display: none;"></div>
-                            <div class="response" id="hero-mce-success-response" style="display: none; color: #28a745; padding: 1rem; text-align: center; font-size: 1.1rem; background-color: #fff;"></div>
+                            <div class="response" id="hero-mce-success-response" style="display: none; color: #28a745; font-size: 1rem;"></div>
                         </div>
                         <div aria-hidden="true" style="position: absolute; left: -5000px;">
                             <input type="text" name="b_9628fdedab0fdccdde4a76d8e_93da5c3b37" tabindex="-1" value="">
@@ -987,6 +1023,15 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#second-section">
+                <span>Scopri di più</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+                
+            </a>
         </div>
     </section>
 
@@ -1047,11 +1092,11 @@
         });
     </script>
 
-    <section class="products">
+    <section class="products" id="second-section">
         <h2>Perché scegliere Arcobaleno?</h2>
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://plus.unsplash.com/premium_photo-1705207702007-7c6a3872ef25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Artisanal Bread">
+                <img src="https://images.unsplash.com/photo-1574484152510-903878da786c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Artisanal Bread">
                 <div class="product-info">
                     <h3>Prodotti certificati</h3>
                     <p>Selezioniamo solo alimenti garantiti senza glutine.</p>
